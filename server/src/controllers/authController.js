@@ -40,7 +40,8 @@ const login = async (req, res) => {
       res.status(401).json({ message: 'Invalid email or password' });
     }
   } catch (error) {
-    res.status(500).json({ message: 'Server error' });
+    console.error('Login Error:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
 

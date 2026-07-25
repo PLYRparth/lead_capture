@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-text text-ink bg-canvas antialiased text-[17px] leading-[1.47] tracking-tight-display m-0 p-0;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight-hero;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-on-primary font-text rounded-pill px-[22px] py-[11px] transition-transform duration-200 active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary-focus focus-visible:outline-offset-2;
+  }
+  
+  .btn-secondary-pill {
+    @apply bg-transparent text-primary border border-primary font-text rounded-pill px-[22px] py-[11px] transition-transform duration-200 active:scale-95;
+  }
+  
+  .btn-dark-utility {
+    @apply bg-ink text-on-dark font-text text-[14px] rounded-sm px-[15px] py-[8px] transition-transform duration-200 active:scale-95;
+  }
+}

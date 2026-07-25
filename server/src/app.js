@@ -4,9 +4,28 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 
+app.set('trust proxy', 1);
+
 // Middleware
+const allowedOrigins = [
+  'http://localhost:3000', 
+  'http://localhost:5173', 
+  'https://lead-capture-hcyg.vercel.app'
+];
+if (process.env.CLIENT_URL) {
+  // Remove trailing slash if present
+  allowedOrigins.push(process.env.CLIENT_URL.replace(/\/$/, ''));
+}
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || ['http://localhost:3000', 'http://localhost:5173', 'https://lead-capture-hcyg.vercel.app'],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.log('CORS blocked origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true, // Allow cookies
 }));
 app.use(express.json());

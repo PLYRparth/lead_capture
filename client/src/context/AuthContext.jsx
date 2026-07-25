@@ -1,8 +1,7 @@
 import { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
-// Configure axios default config
-axios.defaults.withCredentials = true; // IMPORTANT for cookies
+// Axios config is now in main.jsx
 
 export const AuthContext = createContext();
 

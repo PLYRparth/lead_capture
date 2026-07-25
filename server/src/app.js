@@ -6,7 +6,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: process.env.CLIENT_URL || ['http://localhost:3000', 'http://localhost:5173', 'https://lead-capture-hcyg.vercel.app'],
   credentials: true, // Allow cookies
 }));
 app.use(express.json());
